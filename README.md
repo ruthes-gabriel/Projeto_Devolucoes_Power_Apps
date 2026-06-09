@@ -22,12 +22,12 @@ A lista se chama `Devoluções` e tem essas colunas:
 
 - `Title` — texto. É o título do item, preenchido automaticamente com a plataforma escolhida pra dar identidade visual na galeria.
 - `Plataformas` — Choice: Site, Mercado Livre, Shopee, Shein.
-- `Motivodedevolu_x00e7__x00e3_o` — Choice. Lista de motivos cadastrada na coluna (esse nome interno feio vem do encoding automático do SharePoint pra colunas com acento).
+- `Motivodedevolu_x00e7__x00e3_o` — texto. Lista de motivos das devoluções apontadas pelas plataformas (Não usado no aplicativo final pois somente visualizando o motivo da reclamação na plataforma é possivel ).
 - `C_x00f3_digodebarras` — texto. Código de barras EAN do produto. No app aparece como "Código de referência".
 - `Produto_x0028_SKU_x0029_` — texto. SKU/TAG interna do produto.
 - `Quantidade` — texto.
 - `Status` — Choice. Estado pós-análise (ex: Apto para Venda).
-- `Anexos` — anexos da lista, usado pra fotos.
+- `Anexos` — anexos da lista, usado pra fotos. (Usado apenas em caso de necessidade de registro do processo: Caso seja produto de outro vendedor ou o produto tenha retornado com defeito)
 - `Created` — data automática, usada na ordenação.
 
 Os nomes internos codificados em hex (`_x00e7_`, `_x0028_` etc) são gerados pelo próprio SharePoint quando o nome de exibição tem acento ou caractere especial, e é assim que precisam ser referenciados nas fórmulas.
