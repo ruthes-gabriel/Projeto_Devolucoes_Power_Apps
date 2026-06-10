@@ -1,6 +1,6 @@
 # Devoluções
 
-App de controle de devoluções de marketplaces, feito em Power Apps + SharePoint. Mobile-first, com leitura de código de barras e QR code direto da câmera do celular.
+App de controle de devoluções de marketplaces, feito em Power Apps + SharePoint. Foco em Mobile, com leitura de código de barras e QR code direto da câmera do celular.
 
 Usado em produção numa empresa pequena de Piraquara-PR que vende em Site próprio, Mercado Livre, Shopee e Shein. O fluxo é simples: quando chega um produto devolvido, o operador abre o app no celular, escaneia o código de barras do produto e a etiqueta interna (TAG), seleciona a plataforma de origem e o motivo, anexa foto se for o caso e salva. Tudo cai numa lista do SharePoint que serve tanto de banco quanto de painel administrativo.
 
@@ -22,7 +22,7 @@ A lista se chama `Devoluções` e tem essas colunas:
 
 - `Title` — texto. É o título do item, preenchido automaticamente com a plataforma escolhida pra dar identidade visual na galeria.
 - `Plataformas` — Choice: Site, Mercado Livre, Shopee, Shein.
-- `Motivodedevolu_x00e7__x00e3_o` — texto. Lista de motivos das devoluções apontadas pelas plataformas (Não usado no aplicativo final pois somente visualizando o motivo da reclamação na plataforma é possivel ).
+- `Motivodedevolu_x00e7__x00e3_o` — texto. Lista de motivos das devoluções apontadas pelas plataformas (Não usado no aplicativo final pois somente visualizando o motivo da reclamação na plataforma é possivel completar essa informação na lista).
 - `C_x00f3_digodebarras` — texto. Código de barras EAN do produto. No app aparece como "Código de referência".
 - `Produto_x0028_SKU_x0029_` — texto. SKU/TAG interna do produto.
 - `Quantidade` — texto.
@@ -166,6 +166,6 @@ Algumas coisas que custaram tempo até entender, e que ficam aqui pra quem for r
 
 ## Estado atual
 
-Em uso na empresa desde o mês anterior à entrega. Passou pela fase de testes com os ajustes documentados neste README até atingir o estado atual de uso diário sem reclamações funcionais.
+Em uso na empresa desde a data 27/05/2026. Passou pela fase de testes com os ajustes documentados neste README até atingir o estado atual de uso diário sem reclamações funcionais.
 
 Eventuais melhorias futuras: modo offline com sincronização, dashboard em Power BI sobre os dados acumulados, e notificação automatizada via Power Automate pros motivos críticos de devolução.
