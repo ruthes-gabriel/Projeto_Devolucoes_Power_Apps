@@ -133,23 +133,23 @@ Com isso o app se ajusta a qualquer largura de tela, sem cortar campo nem deixar
 
 Algumas coisas que tomaram tempo até eu entender. Deixo registrado aqui para quem for replicar.
 
-**Separador de argumentos.** O ambiente está configurado em pt-BR, então o separador das funções Power Fx é `;`, e não `,`. Ao copiar um exemplo da documentação oficial (que vem com vírgula), o resultado é erro de fórmula, e a mensagem nem sempre deixa claro que o problema é só o separador. Se a fórmula está idêntica ao exemplo e mesmo assim não funciona, vale verificar o separador antes de qualquer outra coisa.
+**Separador de argumentos** - O ambiente está configurado em pt-BR, então o separador das funções Power Fx é `;`, e não `,`. Ao copiar um exemplo da documentação oficial (que vem com vírgula), o resultado é erro de fórmula, e a mensagem nem sempre deixa claro que o problema é só o separador. Se a fórmula está idêntica ao exemplo e mesmo assim não funciona, vale verificar o separador antes de qualquer outra coisa.
 
-**Controles modernos.** Em alguns ambientes eles vêm desativados. Para ativar: Configurações > Atualizações > "Controles e temas modernos" > Ativado. Enquanto isso estiver desligado, o ComboBox moderno não aparece no menu Inserir e você fica restrito ao controle clássico, que tem a barra de busca embutida e ocupa a tela inteira no celular.
+**Controles modernos** - Em alguns ambientes eles vêm desativados. Para ativar: Configurações > Atualizações > "Controles e temas modernos" > Ativado. Enquanto isso estiver desligado, o ComboBox moderno não aparece no menu Inserir e você fica restrito ao controle clássico, que tem a barra de busca embutida e ocupa a tela inteira no celular.
 
-**Layout responsivo.** Um app gerado pela personalização da lista do SharePoint nasce em modo Fixo, com proporção travada. Para rodar bem no celular, vá em Configurações > Tela, desative o "Fixar proporção" e mude para responsivo. Depois disso, qualquer controle com largura ou posição fixa em pixel vai precisar de ajuste para usar `Parent.Width`.
+**Layout responsivo** - Um app gerado pela personalização da lista do SharePoint nasce em modo Fixo, com proporção travada. Para rodar bem no celular, vá em Configurações > Tela, desative o "Fixar proporção" e mude para responsivo. Depois disso, qualquer controle com largura ou posição fixa em pixel vai precisar de ajuste para usar `Parent.Width`.
 
-**Tipo Choice no SharePoint.** O ComboBox moderno lida com isso nativamente (`Update: ComboBox1.Selected` já é suficiente). O Dropdown clássico não: ele trabalha com texto puro e exige um `Update` que monte o registro Choice manualmente, incluindo o `@odata.type`. Tentei por esse caminho no início e gera muito problema. O ComboBox moderno é a melhor opção.
+**Tipo Choice no SharePoint** - O ComboBox moderno lida com isso nativamente (`Update: ComboBox1.Selected` já é suficiente). O Dropdown clássico não: ele trabalha com texto puro e exige um `Update` que monte o registro Choice manualmente, incluindo o `@odata.type`. Tentei por esse caminho no início e gera muito problema. O ComboBox moderno é a melhor opção.
 
 ## Problemas que ficaram
 
 São limitações que conheço, mas que não chegaram a atrapalhar a operação real.
 
-**O scanner às vezes trava em "Carregando...".** Se o usuário abre o scanner e cancela antes de ler qualquer código, o botão pode ficar preso exibindo "Carregando..." e parar de responder. O evento `OnCancel` do BarcodeReader existe e aceita fórmula, mas nessa versão do controle ele não dispara de forma consistente. Tentei resolver com `Clear()` na coleção e com reset do controle por variável de contexto, mas as duas alternativas dependem justamente desse evento que não roda. Na prática isso é raro (quase sempre o usuário conclui a leitura), e quando trava, basta sair do formulário e abrir novamente.
+**O scanner às vezes trava em "Carregando..."** - Se o usuário abre o scanner e cancela antes de ler qualquer código, o botão pode ficar preso exibindo "Carregando..." e parar de responder. O evento `OnCancel` do BarcodeReader existe e aceita fórmula, mas nessa versão do controle ele não dispara de forma consistente. Tentei resolver com `Clear()` na coleção e com reset do controle por variável de contexto, mas as duas alternativas dependem justamente desse evento que não roda. Na prática isso é raro (quase sempre o usuário conclui a leitura), e quando trava, basta sair do formulário e abrir novamente.
 
-**A edição não pré-seleciona a plataforma no ComboBox.** Para evitar conflito de tipo entre o `Parent.Default` (registro Choice) e o placeholder "Selecione..." (texto), mantive o `Default` fixo em "Selecione..." em vez de tentar exibir o valor já salvo. Por isso, ao abrir uma devolução existente para edição, o campo volta como "Selecione..." e precisa ser escolhido novamente antes de salvar. Como o app é usado quase totalmente para criar registros novos, e quase nada para editar, essa limitação tem pouco impacto.
+**A edição não pré-seleciona a plataforma no ComboBox** - Para evitar conflito de tipo entre o `Parent.Default` (registro Choice) e o placeholder "Selecione..." (texto), mantive o `Default` fixo em "Selecione..." em vez de tentar exibir o valor já salvo. Por isso, ao abrir uma devolução existente para edição, o campo volta como "Selecione..." e precisa ser escolhido novamente antes de salvar. Como o app é usado quase totalmente para criar registros novos, e quase nada para editar, essa limitação tem pouco impacto.
 
-**Não há modo offline.** O app precisa de conexão para gravar. Como quem opera trabalha dentro da rede da empresa, isso nunca foi um problema real, mas fica registrado como melhoria.
+**Não há modo offline** - O app precisa de conexão para gravar. Como quem opera trabalha dentro da rede da empresa, isso nunca foi um problema real, mas fica registrado como melhoria.
 
 ## Reproduzindo em outro ambiente
 
